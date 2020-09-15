@@ -1,0 +1,13 @@
+# Cool library to do finite field multiplication/additions
+# Will also construct a lookup table for you
+# from pyfinite import ffield
+# """
+#     283 represents the coefficient generator, to modulo by for multiplication
+#     It's the integer representation of the polynomial:
+#     x^8 + x^4 + x^3 + x + 1, or '0x11b' in hex
+#     0 disables the lookup table
+#     Creates the field GF(2^8)
+# """
+# f = ffield.FField(8, 283, 0)
+
+
