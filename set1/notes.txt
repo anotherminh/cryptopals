@@ -1,5 +1,9 @@
+Good writeup for implementing your own AES in ECB mode
+https://www.adamberent.com/wp-content/uploads/2019/02/AESbyExample.pdf
+
 # Cool library to do finite field multiplication/additions
 # Will also construct a lookup table for you
+
 # from pyfinite import ffield
 # """
 #     283 represents the coefficient generator, to modulo by for multiplication
@@ -10,4 +14,10 @@
 # """
 # f = ffield.FField(8, 283, 0)
 
-
+SBox bit substitution tables can be found on the internet,
+But how it was formed:
+1) Map the 8-bit input to its multiplicative inverse, e.g. f.Multiply(x, r.Inverse(x)) // equivalent to divide by itself??
+2) The output is transformed using the affine function:
+  s = b_i ^ b_((i + 4) % 8) ^ b_((i + 5) % 8) ^ b_((i + 6) % 8) ^ b_((i + 7) % 8) ^ c_i where c = 0x63 or 0b01100011
+  OR, with bitwise manipulation:
+  s = b ^ b << 1 ^ b << 2 ^ b << 3 ^ b << 4 ^ int('0x63', 16')
